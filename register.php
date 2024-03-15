@@ -12,6 +12,14 @@
         $username = $_POST["username"]; 
         $password = $_POST["password"];
 
+    if(empty($username) || empty($password))
+    {
+            $register_massage = "username dan password harus di isi";
+    
+    }
+    else
+    {
+
         
         try {
             $sql = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
@@ -22,13 +30,14 @@
             }
             else
             {
-                $register_massage = "daftar akun gagal, silahkan coba lagi ";
+                $register_massage = "username sudah ada, silahkan ganti  ";
             }
 
         }
         catch (mysqli_sql_exception $e) 
         {
             $register_massage= "username sudah ada";
+            }
         }
     }
 ?>
